@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Effect with Cursor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    #wrapper {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden; /* Ensures no extra characters show */
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background-color: black;
+      animation: blink 0.7s step-start infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <span id="text"></span><span class="cursor"></span>
+  </div>
+
+  <script>
+    const text = "Hello, welcome to the world of CSS and JavaScript!";
+    const textElement = document.getElementById("text");
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        textElement.textContent += text[index];
+        index++;
+        setTimeout(typeText, 200); // Adjust typing speed (in ms)
+      }
+    }
+
+    typeText(); // Start typing animation
+  </script>
+</body>
+</html>
